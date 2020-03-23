@@ -39,7 +39,14 @@ function getLatLon(){
             .then(function(response) {
                 populateData(response);
             });
-
+      
+var theMap = L.map("map-content",{
+    center: [37.54,-77.43],
+    zoom: 13, })
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(theMap);
+      
         function populateData(response) {
             console.log(response);
         }
