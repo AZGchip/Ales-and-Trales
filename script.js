@@ -20,11 +20,11 @@ function getLatLon(){
             results = response;
             searchLat = results[0].lat;
             searchLon = results[0].lon;
-            console.log(response);
-            console.log(response[0].display_name);
-            console.log(response[0].display_name[3]);
-            console.log(searchLon);
-            console.log(searchLat);
+            // console.log(response);
+            // console.log(response[0].display_name);
+            // console.log(response[0].display_name[3]);
+            // console.log(searchLon);
+            // console.log(searchLat);
             trailSearch();
             brewerySearch();
         });
@@ -39,16 +39,18 @@ function getLatLon(){
             .then(function(response) {
                 populateData(response);
             });
-      
+
+    console.log(searchLon);
+    
 var theMap = L.map("map-content",{
-    center: [37.54,-77.43],
+    center: [searchLat, searchLon],
     zoom: 13, })
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(theMap);
       
         function populateData(response) {
-            console.log(response);
+            // console.log(response);
         }
     }
 
@@ -64,7 +66,7 @@ var theMap = L.map("map-content",{
             }
         }
         $.ajax(settings).done(function (response) {
-            console.log(response);
+            // console.log(response);
         });
     }
 }
