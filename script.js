@@ -2,27 +2,27 @@ var searchbox;
 let searchLat;
 let searchlon;
 
-// $("#user-input").on("click", function(event) {
-//     event.preventDefault();
-//     searchbox = $(this).prev().val();
-//     console.log(searchbox);
-//     //api value 
-//     var apiUrl =  "https://nominatim.openstreetmap.org/search/"+ searchbox + "?format=json";
-//     var results;
-//     function getLatLon(){
-//         $.ajax({
-//             url: apiUrl,
-//             method: "GET"
-//         })
-//             .then(function (response) {
-//                 results = response;
-//                 searchLat = results[0].lat
-//                 searchlon = results[0].lon
-//                 console.log(results)
-//             });
-//     };
-//     getLatLon();
-// });
+$("#user-input").on("click", function(event) {
+    event.preventDefault();
+    searchbox = $(this).prev().val();
+    console.log(searchbox);
+    //api value 
+    var apiUrl =  "https://nominatim.openstreetmap.org/search/"+ searchbox + "?format=json";
+    var results;
+    function getLatLon(){
+        $.ajax({
+            url: apiUrl,
+            method: "GET"
+        })
+            .then(function (response) {
+                results = response;
+                searchLat = results[0].lat
+                searchlon = results[0].lon
+                console.log(results)
+            });
+    };
+    getLatLon();
+});
 
 
 
