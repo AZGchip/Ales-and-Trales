@@ -1,21 +1,21 @@
 
-var searchbox = "richmond, va"
-//api value 
-var apiUrl =  " https://nominatim.openstreetmap.org/search/"+ searchbox +"?format=json"
-getLatLon()
-var results
-function getLatLon(){
-    $.ajax({
-        url: apiUrl,
-        method: "GET"
-    })
-        .then(function (response) {
-results = response;
-let searchLat = results[0].lat
-let searchlon = results[0].lon
-console.log(results)
-        });
-}
+// var searchbox = "richmond, va"
+// //api value 
+// var apiUrl =  " https://nominatim.openstreetmap.org/search/"+ searchbox +"?format=json"
+// getLatLon()
+// var results
+// function getLatLon(){
+//     $.ajax({
+//         url: apiUrl,
+//         method: "GET"
+//     })
+//         .then(function (response) {
+// results = response;
+// let searchLat = results[0].lat
+// let searchlon = results[0].lon
+// console.log(results)
+//         });
+// }
 // var userLat = 37.540726;
 // var userLon = -77.436050;
 
