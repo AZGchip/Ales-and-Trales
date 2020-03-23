@@ -89,6 +89,14 @@ button {
     height: fit-content;
 }
 
+<<<<<<< HEAD
+=======
+#map-content {
+ height: 1000px;
+ 
+}
+
+>>>>>>> 6fd933fdd846f85a1516271abd350ad2c8baae65
 .test-map {
     width: 100%;
 }
