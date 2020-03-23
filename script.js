@@ -1,21 +1,39 @@
+var searchbox;
+let searchLat;
+let searchlon;
 
-// var searchbox = "richmond, va"
-// //api value 
-// var apiUrl =  " https://nominatim.openstreetmap.org/search/"+ searchbox +"?format=json"
-// getLatLon()
-// var results
-// function getLatLon(){
-//     $.ajax({
-//         url: apiUrl,
-//         method: "GET"
-//     })
-//         .then(function (response) {
-// results = response;
-// let searchLat = results[0].lat
-// let searchlon = results[0].lon
-// console.log(results)
-//         });
-// }
+// $("#user-input").on("click", function(event) {
+//     event.preventDefault();
+//     searchbox = $(this).prev().val();
+//     console.log(searchbox);
+//     //api value 
+//     var apiUrl =  "https://nominatim.openstreetmap.org/search/"+ searchbox + "?format=json";
+//     var results;
+//     function getLatLon(){
+//         $.ajax({
+//             url: apiUrl,
+//             method: "GET"
+//         })
+//             .then(function (response) {
+//                 results = response;
+//                 searchLat = results[0].lat
+//                 searchlon = results[0].lon
+//                 console.log(results)
+//             });
+//     };
+//     getLatLon();
+// });
+
+
+
+
+
+var theMap = L.map("map-content",{
+    center: [37.54,-77.43],
+    zoom: 13, })
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(theMap);
 // var userLat = 37.540726;
 // var userLon = -77.436050;
 
@@ -57,4 +75,7 @@
 // }
 // $.ajax(settings).done(function (response) {
 // 	console.log(response);
-// })
+// });
+
+
+

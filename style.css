@@ -94,7 +94,8 @@ button {
     height: fit-content;
 }
 
-.map-content {
+#map-content {
+ height: 1000px;
  
 }
 
