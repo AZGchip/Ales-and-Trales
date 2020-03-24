@@ -1,9 +1,12 @@
 body {
-    margin: 0;
+    margin: 0; ;
 }
 
-p {
+h2 {
     margin-bottom: 0;
+    font-size: 30px;
+    color: rgb(185, 151, 37);
+    text-align: center;
 }
 
 /* header */
@@ -15,12 +18,14 @@ p {
     background-color:  rgb(51, 124, 3);
     margin-top: 1rem;
     border-width: 0.5rem;
+    border-radius: 0.5rem;
     border-color: rgb(51, 124, 3);
 }
 
 /* search and welcome row */
 .search-welcome-div {
     margin: 0 auto;
+    padding-right: 30px;
 }
 
 /* welcome message */
@@ -35,13 +40,16 @@ p {
     color: white;
     background-color:  rgb(51, 124, 3);
     border-width: 0.5rem;
+    border-radius: 0.5rem;
     border-color:  rgb(51, 124, 3);
     margin-top: 1rem;
-    padding: 1rem;
+    
+    text-align: center
 }
 
 .search-bar {
     position: relative;
+    display: inline-block;
 }
 
 label {
@@ -52,6 +60,7 @@ label {
 input {
     position: relative;
     float: left;
+    border-radius: 0.35rem;
     border: solid;
     border-width: 0.05rem;
     border-color: rgba(128, 0, 128, 0);
@@ -64,6 +73,7 @@ button {
     float: left;
     padding: 0;
     margin: 0;
+    border-radius: 0.35rem;
     border-style: solid;
     border-width: 0.05rem;
     border-color: rgb(246, 212, 100);
@@ -78,6 +88,7 @@ button {
     margin-top: 1rem;
     position: relative;
     background-color:  rgb(51, 124, 3);
+    border-radius: 0.5rem;
     margin-bottom: 2rem;
 }
 
@@ -89,25 +100,27 @@ button {
     height: fit-content;
 }
 
-<<<<<<< HEAD
-=======
 #map-content {
  height: 1000px;
  
 }
 
->>>>>>> 6fd933fdd846f85a1516271abd350ad2c8baae65
 .test-map {
+    position: relative;
+    float: left;
     width: 100%;
 }
 
 .key-div {
-    display: inline;
+    width: 25%;
+    float: left;
     text-align: center;
+    position: relative;
 }
 
 .key-content {
-    width: 100%;
-    position: relative;
     color: white;
+    position: relative;
+    padding-left: 2%;
+    padding-right: 2%;
 }
