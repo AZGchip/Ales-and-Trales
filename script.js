@@ -1,6 +1,9 @@
 var searchbox;
 let searchLat;
 let searchLon;
+var zip;
+var theMap;
+var brew;
 
 $("#user-input").on("click", function(event) {
     event.preventDefault();
@@ -20,11 +23,27 @@ function getLatLon(){
             results = response;
             searchLat = results[0].lat;
             searchLon = results[0].lon;
-            console.log(response);
-            console.log(response[0].display_name);
-            console.log(response[0].display_name[3]);
-            console.log(searchLon);
-            console.log(searchLat);
+            // console.log(response);
+            // console.log(response[0].display_name);
+            // console.log(response[0].display_name[3]);
+            // console.log(searchLon);
+            // console.log(searchLat);
+             theMap = L.map("map-content",{
+                center: [searchLat, searchLon],
+                zoom: 13, })
+                L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(theMap);
+            getZip()
+            function getZip() { 
+                var str = results[0].display_name; 
+                var matches = str.match(/(\d{5})/); 
+                  
+                if (matches) { 
+                    zip = matches[0]; 
+                    console.log(zip)
+                } 
+            } 
             trailSearch();
             brewerySearch();
         });
@@ -42,15 +61,12 @@ function getLatLon(){
 
     console.log(searchLon);
     
-var theMap = L.map("map-content",{
-    center: [searchLat, searchLon],
-    zoom: 13, })
-    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(theMap);
+
       
         function populateData(response) {
-            console.log(response);
+            for(let i = 0;i < response.trails.length;i++){
+                L.marker([response.trails[i].latitude,response.trails[i].longitude]).addTo(theMap); 
+            }
         }
     }
 
@@ -58,7 +74,7 @@ var theMap = L.map("map-content",{
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "https://brianiswu-open-brewery-db-v1.p.rapidapi.com/breweries/search?query=" + searchbox,
+            "url": "https://brianiswu-open-brewery-db-v1.p.rapidapi.com/breweries/search?query=" + zip,
             "method": "GET",
             "headers": {
                 "x-rapidapi-host": "brianiswu-open-brewery-db-v1.p.rapidapi.com",
@@ -66,7 +82,13 @@ var theMap = L.map("map-content",{
             }
         }
         $.ajax(settings).done(function (response) {
-            console.log(response);
+            brew = response
+            console.log(response)
+            for(let i = 0;i < response.length;i++){
+                if(response[i].latitude !== null){
+                L.marker([response[i].latitude,response[i].longitude]).addTo(theMap); 
+                }
+            }
         });
     }
 }
