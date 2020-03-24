@@ -4,6 +4,12 @@ let searchLon;
 var zip;
 var theMap;
 var brew;
+theMap = L.map("map-content",{
+    center: [37.54, -77.43],
+    zoom: 8, })
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(theMap);
 
 $("#user-input").on("click", function(event) {
     event.preventDefault();
@@ -28,12 +34,7 @@ function getLatLon(){
             // console.log(response[0].display_name[3]);
             // console.log(searchLon);
             // console.log(searchLat);
-            theMap = L.map("map-content",{
-                center: [searchLat, searchLon],
-                zoom: 8, })
-                L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(theMap);
+            theMap.panTo(new L.LatLng(searchLat,searchLon));
             getZip()
             function getZip() { 
                 var str = results[0].display_name; 
