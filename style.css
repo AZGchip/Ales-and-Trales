@@ -1,9 +1,12 @@
 body {
-    margin: 0;
+    margin: 0; ;
 }
 
-p {
+h2 {
     margin-bottom: 0;
+    font-size: 30px;
+    color: rgb(185, 151, 37);
+    text-align: center;
 }
 
 /* header */
@@ -22,6 +25,7 @@ p {
 /* search and welcome row */
 .search-welcome-div {
     margin: 0 auto;
+    padding-right: 30px;
 }
 
 /* welcome message */
@@ -39,11 +43,13 @@ p {
     border-radius: 0.5rem;
     border-color:  rgb(51, 124, 3);
     margin-top: 1rem;
-    padding: 1rem;
+    
+    text-align: center
 }
 
 .search-bar {
     position: relative;
+    display: inline-block;
 }
 
 label {
