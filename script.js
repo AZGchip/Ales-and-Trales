@@ -20,11 +20,11 @@ function getLatLon(){
             results = response;
             searchLat = results[0].lat;
             searchLon = results[0].lon;
-            // console.log(response);
-            // console.log(response[0].display_name);
-            // console.log(response[0].display_name[3]);
-            // console.log(searchLon);
-            // console.log(searchLat);
+            console.log(response);
+            console.log(response[0].display_name);
+            console.log(response[0].display_name[3]);
+            console.log(searchLon);
+            console.log(searchLat);
             trailSearch();
             brewerySearch();
         });
@@ -50,7 +50,7 @@ var theMap = L.map("map-content",{
 }).addTo(theMap);
       
         function populateData(response) {
-            // console.log(response);
+            console.log(response);
         }
     }
 
@@ -66,7 +66,7 @@ var theMap = L.map("map-content",{
             }
         }
         $.ajax(settings).done(function (response) {
-            // console.log(response);
+            console.log(response);
         });
     }
 }
