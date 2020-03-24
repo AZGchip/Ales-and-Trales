@@ -28,9 +28,9 @@ function getLatLon(){
             // console.log(response[0].display_name[3]);
             // console.log(searchLon);
             // console.log(searchLat);
-             theMap = L.map("map-content",{
+            theMap = L.map("map-content",{
                 center: [searchLat, searchLon],
-                zoom: 13, })
+                zoom: 8, })
                 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(theMap);
@@ -57,15 +57,16 @@ function getLatLon(){
         })
             .then(function(response) {
                 populateData(response);
+                console.log(response);
             });
-
-    console.log(searchLon);
-    
-
       
         function populateData(response) {
+            var trailIcon = L.icon({
+                iconUrl: 'hiking.png',
+            })
             for(let i = 0;i < response.trails.length;i++){
-                L.marker([response.trails[i].latitude,response.trails[i].longitude]).addTo(theMap); 
+                var marker = L.marker([response.trails[i].latitude,response.trails[i].longitude], {icon: trailIcon}).addTo(theMap);
+                marker.bindPopup("Trail: " + response.trails[i].name + " Length: " + response.trails[i].length + "mi.").openPopup();
             }
         }
     }
@@ -84,9 +85,13 @@ function getLatLon(){
         $.ajax(settings).done(function (response) {
             brew = response
             console.log(response)
+            var beerIcon = L.icon({
+                iconUrl: 'beer-icon.png',
+            })
             for(let i = 0;i < response.length;i++){
                 if(response[i].latitude !== null){
-                L.marker([response[i].latitude,response[i].longitude]).addTo(theMap); 
+                var marker = L.marker([response[i].latitude,response[i].longitude], {icon: beerIcon}).addTo(theMap); 
+                marker.bindPopup("Brewery: " + response[i].name + " Address: " + response[i].street).openPopup();
                 }
             }
         });
