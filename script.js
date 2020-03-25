@@ -83,7 +83,10 @@ function getLatLon(){
       
         function populateData(response) {
              trailIcon = L.icon({
-                iconUrl: 'hiking.png',
+                iconUrl: "assets/hiker-pin-green.png",
+                iconSize: [15, 29],
+                iconAnchor: [7.5, 29],
+                popupAnchor: [-6.5, -29]
             })
             for(let i = 0;i < response.trails.length;i++){
                  let marker = L.marker([response.trails[i].latitude,response.trails[i].longitude], {icon: trailIcon}).addTo(theMap);
@@ -108,7 +111,10 @@ function getLatLon(){
             brew = response
             console.log(response)
              beerIcon = L.icon({
-                iconUrl: 'beer-icon.png',
+                iconUrl: "assets/beer-pin-yellow.png",
+                iconSize: [15, 29],
+                iconAnchor: [7.5, 29],
+                popupAnchor: [-6.5, -29]
             })
             for(let i = 0;i < response.length;i++){
                 if(response[i].latitude !== null){
