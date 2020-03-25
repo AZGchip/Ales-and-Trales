@@ -70,7 +70,7 @@ function getLatLon(){
             brewerySearch();
         });
     function trailSearch() { 
-        var reiURL = "https://www.hikingproject.com/data/get-trails?lat=" + searchLat + "&lon=" + searchLon + "&maxDistance=100&key=200708264-a5ce732ab3823333a148cde68ddfa0ce"
+        var reiURL = "https://www.hikingproject.com/data/get-trails?lat=" + searchLat + "&lon=" + searchLon + "&maxDistance=20&maxResults=500&key=200708264-a5ce732ab3823333a148cde68ddfa0ce"
 
         $.ajax ({
             url: reiURL,
@@ -90,7 +90,7 @@ function getLatLon(){
             })
             for(let i = 0;i < response.trails.length;i++){
                  let marker = L.marker([response.trails[i].latitude,response.trails[i].longitude], {icon: trailIcon}).addTo(theMap);
-                marker.bindPopup("Trail: " + response.trails[i].name + " Length: " + response.trails[i].length + "mi.").openPopup();
+                marker.bindPopup("Trail: " + response.trails[i].name + "<br>" + "Length: " + response.trails[i].length + "mi.").openPopup();
                 trailArray.push(marker)
             }
         }
@@ -119,7 +119,7 @@ function getLatLon(){
             for(let i = 0;i < response.length;i++){
                 if(response[i].latitude !== null){
                  let marker = L.marker([response[i].latitude,response[i].longitude], {icon: beerIcon}).addTo(theMap); 
-                marker.bindPopup("Brewery: " + response[i].name + " Address: " + response[i].street).openPopup();
+                marker.bindPopup("Brewery: " + response[i].name + "<br>" + "Address: " + response[i].street).openPopup();
                 beerArray.push(marker)
                 }
             }
