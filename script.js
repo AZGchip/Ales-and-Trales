@@ -35,7 +35,7 @@ function getLatLon(){
             searchLat = results[0].lat;
             searchLon = results[0].lon;
             console.log(response);
-            // console.log(response[0].display_name);
+            console.log(response[0].display_name);
             // console.log(response[0].display_name[3]);
             // console.log(searchLon);
             // console.log(searchLat);
@@ -111,7 +111,7 @@ function getLatLon(){
             brew = response
             console.log(response)
              beerIcon = L.icon({
-                iconUrl: "assets/beer-pin-yellow.png",
+                iconUrl: "assets/beer-yellow-map-pin.png",
                 iconSize: [15, 29],
                 iconAnchor: [7.5, 29],
                 popupAnchor: [-6.5, -29]
