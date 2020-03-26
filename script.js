@@ -69,6 +69,7 @@ function getLatLon(){
             trailSearch();
             brewerySearch();
         });
+
     function trailSearch() { 
         var reiURL = "https://www.hikingproject.com/data/get-trails?lat=" + searchLat + "&lon=" + searchLon + "&maxDistance=100&key=200708264-a5ce732ab3823333a148cde68ddfa0ce"
 
