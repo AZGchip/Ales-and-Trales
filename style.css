@@ -68,21 +68,14 @@ button {
 
 i.material-icons {
     position: relative;
-    top: 0.3rem;
-    right: 0.7rem;
+    top: 0.35rem;
+    right: 0.68rem;
     color: white;
     font-size: 2.25rem;
 }
 
-button:hover {
+i:hover {
     color: black;
-    border-color: rgb(243, 200, 57);
-}
-
-button:focus, input:focus {
-    color: black;
-    border-color:  rgb(243, 200, 57) !important; 
-    /* having trouble overriding the materialize default for when button and input field are active/clicked. it is a soft teal color */
 }
 
 /* map */
