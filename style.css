@@ -10,6 +10,10 @@ img {
     top: 0.25rem;
 }
 
+nav.blue {
+    background-color: rgb(4, 148, 196)
+}
+
 /* search */
 .search-div {
     width: 100%;
@@ -30,42 +34,48 @@ input {
     position: relative;
     float: left;
     border-style: solid !important;
-    border-width: 0.05rem !important;
-    border-color: rgb(228, 192, 76) !important;
+    border-width: 0.1rem !important;
+    border-color: rgb(243, 200, 57) !important;
+    border-radius: 0.25rem !important;
     width: 100%;
     margin-bottom: 0;
     z-index: 1;
+    background-color: white !important;
 }
 
 button {
     position: absolute;
-    right: -0.1rem;
+    right: -0.15rem;
+    top: 0.06rem;
     float: left;
     padding: 0;
     margin: 0;
-    border-style: solid;
+    border-top: solid;
+    border-right: solid;
+    border-bottom: solid;
     border-left: none;
-    border-width: 0.05rem;
-    border-color:  rgb(228, 192, 76);
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
+    border-width: 0.1rem !important;
+    border-color:  rgb(243, 200, 57) !important;
+    border-bottom-left-radius: 0 !important;
+    border-top-left-radius: 0 !important;
     color: white;
-    width: 3.05rem;
-    height: 3.05rem;
-    background-color:  rgb(243, 200, 57);
+    width: 3.05rem !important;
+    height: 3.05rem !important;
+    background-color:  rgb(243, 200, 57) !important;
     font-size: 1.5rem;
     z-index: 1;
 }
 
-button:hover {
-    color: black;
-    border-color:  rgb(228, 192, 76);
+i.material-icons {
+    position: relative;
+    top: 0.35rem;
+    right: 0.68rem;
+    color: white;
+    font-size: 2.25rem;
 }
 
-button:focus, input:focus {
+i:hover {
     color: black;
-    border-color:  rgb(228, 192, 76) !important; 
-    /* having trouble overriding the materialize default for when button and input field are active/clicked. it is a soft teal color */
 }
 
 /* map */
@@ -85,9 +95,12 @@ main {
 }
 
 /* footer */
+nav.green {
+    background-color: lightgreen;
+}
+
 .footer-fixed {
 	position: fixed;
 	bottom: 0;
-	width: 100%;
+    width: 100%;
 }
-
