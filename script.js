@@ -1,4 +1,4 @@
-var searchbox;
+var searchInputs;
 let searchLat;
 let searchLon;
 var zip;
@@ -18,13 +18,19 @@ theMap = L.map("map-content",{
 
 $("#user-input").on("click", function(event) {
     event.preventDefault();
-    searchbox = $(this).prev().val();
+    var city = $("#city").val();
+    var state = $("#state").val();
+    console.log(city);
+    console.log(state);
+    localStorage.setItem("city", city);
+    localStorage.setItem("state", state);
+    searchInputs = city + "%2C+" + state;
     getLatLon();
 });
 
 function getLatLon(){
     //api value 
-    var apiUrl =  "https://nominatim.openstreetmap.org/search/"+ searchbox + "?format=json";
+    var apiUrl = "https://nominatim.openstreetmap.org/search/"+ searchInputs + "?format=json";
     var results;
     $.ajax({
         url: apiUrl,
@@ -55,17 +61,21 @@ function getLatLon(){
             }
             //set mapview to new location
             theMap.panTo(new L.LatLng(searchLat,searchLon));
-            getZip()
-            function getZip() { 
-                var str = results[0].display_name; 
-                //look for zipcode in adress string
-                var matches = str.match(/(\d{5})/); 
+
+            // DELETE
+            // getZip()
+            // function getZip() { 
+            //     var str = results[0].display_name; 
+            //     //look for zipcode in address string
+            //     var matches = str.match(/(\d{5})/); 
                   
-                if (matches) { 
-                    zip = matches[0]; 
-                    console.log(zip)
-                } 
-            } 
+            //     if (matches) { 
+            //         zip = matches[0]; 
+            //         console.log(zip)
+            //     };
+            // } 
+            // DELETE
+
             trailSearch();
             brewerySearch();
         });
@@ -97,10 +107,12 @@ function getLatLon(){
     }
 
     function brewerySearch() {
+        var city = localStorage.getItem("city");
+        var state = localStorage.getItem("state");
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "https://brianiswu-open-brewery-db-v1.p.rapidapi.com/breweries/search?query=" + zip,
+            "url": "https://brianiswu-open-brewery-db-v1.p.rapidapi.com/breweries?by_city=" + city + "&by_state=" + state,
             "method": "GET",
             "headers": {
                 "x-rapidapi-host": "brianiswu-open-brewery-db-v1.p.rapidapi.com",

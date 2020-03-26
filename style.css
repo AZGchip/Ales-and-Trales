@@ -11,7 +11,7 @@ img {
 }
 
 nav.blue {
-    background-color: rgb(4, 148, 196)
+    background-color: rgb(2, 139, 202) !important;
 }
 
 /* search */
@@ -96,7 +96,9 @@ main {
 
 /* footer */
 nav.green {
-    background-color: lightgreen;
+    background-color: rgb(3, 151, 3) !important;
+    text-align: center;
+    color:  rgb(243, 200, 57);
 }
 
 .footer-fixed {
