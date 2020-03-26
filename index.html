@@ -1,73 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
+    <!-- mobile meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- stylesheets -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="style.css">
     <title>Ales&Trales</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- materialize icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
-
-    <div class="container">
-
-        <section class="header">
-
-            <h1 class="logo-heading">Ales & Trales</h1>
-
-            <div class="row search-welcome-div">
-
-                <div class="twelve columns">
-                    <div class="welcome-div"></div>
-                    <h2><b>Plan your outdoor adventure!</b></h2>
-                </div>
-
-            </div>
-
-            <div class="twelve columns search-div">
-                <form>
-                    <label>Search:</label>
-                    <div class="search-bar">
-                        <input type="text" placeholder="City, State, or Zip Code" name="search">
-                        <button type="submit" id="user-input"><i class="fa fa-beer"></i></button>
+    <!-- fixed header/ needs style changes, currently materialize default -->
+    <div class="navbar-fixed">
+        <nav class="blue">
+            <div class="nav-wrapper">
+                <div class="row">
+                    <div class="col s12 center">
+                        <!-- working on logo, this is first draft, going to try a few -->
+                        <img class="responsive-img" src="images/textwhitelogo.png">
                     </div>
-                </form>
+                </div>
             </div>
-          
-        </section>
-
+        </nav>
     </div>
 
+    <!-- search field, absolutely positioned over map div -->
+    <!-- needs style changes -->
+    <div class="search-div">
+        <form class="search-bar">
+            <input type="text" placeholder="City, State, or Zip" name="search">
+            <button class="btn-flat" type="submit" id="user-input"><i class="material-icons">explore</i></button>
+        </form>
+    </div>
 
+    <!-- main content : map -->
+    <main>
+        <div class="map-div" id="map-content">
 
-
-    <div class="container">
-        <div class="row map-key-wrapper">
-
-            <div class="twelve columns">
-
-                <div class="map-div">
-                    <div id="map-content">
-
-                    </div>
-                </div>
-
-                <div class="key-div">
-                    <div class="key-content">
-                        Trales & Brewery Key
-                    </div>
-                </div>
-
-            </div>
         </div>
+    </main>
 
+    <!-- fixed footer -->
+    <div class="footer-fixed">
+        <footer class="z-depth-2">
+            <nav class="green">
+                <div class="content">
+                </div>
+            </nav>
+        </footer>
     </div>
 
+    <!-- scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"
         integrity="sha256-AdQN98MVZs44Eq2yTwtoKufhnU+uZ7v2kXnD5vqzZVo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"

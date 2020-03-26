@@ -34,8 +34,8 @@ function getLatLon(){
             results = response;
             searchLat = results[0].lat;
             searchLon = results[0].lon;
-            // console.log(response);
-            // console.log(response[0].display_name);
+            console.log(response);
+            console.log(response[0].display_name);
             // console.log(response[0].display_name[3]);
             // console.log(searchLon);
             // console.log(searchLat);
@@ -71,7 +71,7 @@ function getLatLon(){
         });
 
     function trailSearch() { 
-        var reiURL = "https://www.hikingproject.com/data/get-trails?lat=" + searchLat + "&lon=" + searchLon + "&maxDistance=100&key=200708264-a5ce732ab3823333a148cde68ddfa0ce"
+        var reiURL = "https://www.hikingproject.com/data/get-trails?lat=" + searchLat + "&lon=" + searchLon + "&maxDistance=20&maxResults=500&key=200708264-a5ce732ab3823333a148cde68ddfa0ce"
 
         $.ajax ({
             url: reiURL,
@@ -84,11 +84,14 @@ function getLatLon(){
       
         function populateData(response) {
              trailIcon = L.icon({
-                iconUrl: 'hiking.png',
+                iconUrl: "assets/hiker-pin-green.png",
+                iconSize: [15, 29],
+                iconAnchor: [7.5, 29],
+                popupAnchor: [-6.5, -29]
             })
             for(let i = 0;i < response.trails.length;i++){
                  let marker = L.marker([response.trails[i].latitude,response.trails[i].longitude], {icon: trailIcon}).addTo(theMap);
-                marker.bindPopup("Trail: " + response.trails[i].name + " Length: " + response.trails[i].length + "mi.").openPopup();
+                marker.bindPopup("Trail: " + response.trails[i].name + "<br>" + "Length: " + response.trails[i].length + "mi.").openPopup();
                 trailArray.push(marker)
             }
         }
@@ -109,12 +112,15 @@ function getLatLon(){
             brew = response
             console.log(response)
              beerIcon = L.icon({
-                iconUrl: 'beer-icon.png',
+                iconUrl: "assets/beer-yellow-map-pin.png",
+                iconSize: [15, 29],
+                iconAnchor: [7.5, 29],
+                popupAnchor: [-6.5, -29]
             })
             for(let i = 0;i < response.length;i++){
                 if(response[i].latitude !== null){
                  let marker = L.marker([response[i].latitude,response[i].longitude], {icon: beerIcon}).addTo(theMap); 
-                marker.bindPopup("Brewery: " + response[i].name + " Address: " + response[i].street).openPopup();
+                marker.bindPopup("Brewery: " + response[i].name + "<br>" + "Address: " + response[i].street).openPopup();
                 beerArray.push(marker)
                 }
             }
