@@ -11,7 +11,7 @@ img {
 }
 
 nav.blue {
-    background-color: rgb(4, 148, 196)
+    background-color: rgb(37, 134, 179) !important;
 }
 
 /* search */
@@ -27,49 +27,53 @@ nav.blue {
     margin: 0 auto;
     position: relative;
     z-index: 1;
-    width: 65%;
+    width: 60%;
 }
 
-input {
+input.input {
     position: relative;
-    float: left;
+    font-size: 3rem;
+    padding-left: 0.75rem !important;
     border-style: solid !important;
-    border-width: 0.1rem !important;
-    border-color: rgb(243, 200, 57) !important;
-    border-radius: 0.25rem !important;
-    width: 100%;
-    margin-bottom: 0;
+    border-width: 0.2rem !important;
+    border-color: rgb(218, 174, 30)!important;
+    border-radius: 1.2rem !important;
+    margin-bottom: 0 !important;
     z-index: 1;
     background-color: white !important;
 }
 
 button {
     position: absolute;
-    right: -0.15rem;
-    top: 0.06rem;
+    right: -1.2rem;
+    top: 0rem;
     float: left;
     padding: 0;
     margin: 0;
-    border-top: solid;
-    border-right: solid;
-    border-bottom: solid;
-    border-left: none;
-    border-width: 0.1rem !important;
-    border-color:  rgb(243, 200, 57) !important;
-    border-bottom-left-radius: 0 !important;
-    border-top-left-radius: 0 !important;
     color: white;
-    width: 3.05rem !important;
-    height: 3.05rem !important;
-    background-color:  rgb(243, 200, 57) !important;
     font-size: 1.5rem;
     z-index: 1;
 }
 
+.the-button {
+    border-top: solid;
+    border-right: solid;
+    border-bottom: solid;
+    border-left: none;
+    border-radius: 1.2rem;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    border-color: rgb(218, 174, 30);
+    border-width: 0.2rem;
+    width: 3.4rem;
+    height: 3.4rem;
+    background-color:  rgb(243, 200, 57);
+}
+
 i.material-icons {
     position: relative;
-    top: 0.35rem;
-    right: 0.68rem;
+    top: 0.24rem;
+    right: 0.67rem;
     color: white;
     font-size: 2.25rem;
 }
@@ -96,7 +100,9 @@ main {
 
 /* footer */
 nav.green {
-    background-color: lightgreen;
+    background-color: rgb(51, 116, 40) !important;
+    text-align: center;
+    color:   rgb(243, 200, 57);
 }
 
 .footer-fixed {
