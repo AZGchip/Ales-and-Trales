@@ -20,6 +20,8 @@ $("#user-input").on("click", function (event) {
     event.preventDefault();
     searchbox = $(this).prev().val();
     getLatLon();
+    // clearing out input field
+    $(this).prev().val("");
 });
 
 //take user input, ajax call returns lat/long and city/state info
