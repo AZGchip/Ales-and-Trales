@@ -1,6 +1,4 @@
 var searchbox;
-
-
 var theMap;
 var brew;
 var beerArray = [];
@@ -8,22 +6,24 @@ var trailArray = [];
 var results;
 var beerIcon
 var trailIcon
+//set default center point on map
 theMap = L.map("map-content", {
     center: [37.54, -77.43],
     zoom: 8,
-})
+});
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(theMap);
 
+//click event on user input box
 $("#user-input").on("click", function (event) {
     event.preventDefault();
     searchbox = $(this).prev().val();
     getLatLon();
 });
 
+//take user input, ajax call returns lat/long and city/state info
 function getLatLon() {
-    //api value 
     var apiUrl = "https://nominatim.openstreetmap.org/search/" + searchbox + "?format=json&addressdetails=1";
 
     $.ajax({
@@ -31,8 +31,8 @@ function getLatLon() {
         method: "GET"
     })
         .then(function (response) {
-            console.log(response)
             results = response;
+            //parameters to passed into brewery & trail search functions
             let city;
             let state;
             let searchLat;
@@ -42,28 +42,16 @@ function getLatLon() {
                 state = results[0].address.state;
                 searchLat = results[0].lat;
                 searchLon = results[0].lon;
-                console.log(city);
             }
             else if (results[1] !== undefined && results[1].address.city !== undefined) {
-                city = results[1].address.city.replace("City", "");
+                city = results[1].address.city.replace(" City", "");
                 state = results[1].address.state;
                 searchLat = results[1].lat;
                 searchLon = results[1].lon;
             }
             else {
-                console.log("enter valid city")
+                alert("enter valid city")
             }
-
-
-
-
-            // console.log(response);
-            // console.log(response[0].display_name);
-            // console.log(response[0].display_name[3]);
-            // console.log(searchLon);
-            // console.log(searchLat);
-            // theMap.removeLayer(beerIcon)
-            // theMap.removeLayer(trailIcon)
             // if beer array is not empty, remove each previous icons
             if (beerArray !== []) {
                 beerArray.forEach(b => {
@@ -76,21 +64,20 @@ function getLatLon() {
                     theMap.removeLayer(t)
                 });
             }
-            //set mapview to new location
+            //set mapview to searched location
             theMap.panTo(new L.LatLng(searchLat, searchLon));
             trailSearch(searchLat, searchLon);
             brewerySearch(city, state);
         });
-
+    //call to rei hiking api
     function trailSearch(searchLat, searchLon) {
-        var reiURL = "https://www.hikingproject.com/data/get-trails?lat=" + searchLat + "&lon=" + searchLon + "&maxDistance=20&maxResults=500&key=200708264-a5ce732ab3823333a148cde68ddfa0ce"
+        var reiURL = "https://www.hikingproject.com/data/get-trails?lat=" + searchLat + "&lon=" + searchLon + "&maxDistance=20&maxResults=500&key=200708264-a5ce732ab3823333a148cde68ddfa0ce";
 
         $.ajax({
             url: reiURL,
             method: "GET"
         })
             .then(function (response) {
-
                 trailIcon = L.icon({
                     iconUrl: "assets/hiker-pin-green.png",
                     iconSize: [20, 39.7],
@@ -100,15 +87,11 @@ function getLatLon() {
                 for (let i = 0; i < response.trails.length; i++) {
                     let marker = L.marker([response.trails[i].latitude, response.trails[i].longitude], { icon: trailIcon }).addTo(theMap);
                     marker.bindPopup("Trail: " + response.trails[i].name + "<br>" + "Length: " + response.trails[i].length + "mi.").openPopup();
-                    trailArray.push(marker)
+                    trailArray.push(marker);
                 }
             });
-
-
-
-
     }
-
+    //call to open brewery api
     function brewerySearch(city, state) {
         var settings = {
             "async": true,
@@ -121,7 +104,7 @@ function getLatLon() {
             }
         }
         $.ajax(settings).done(function (response) {
-            brew = response
+            brew = response;
             beerIcon = L.icon({
                 iconUrl: "assets/beer-yellow-map-pin.png",
                 iconSize: [20, 39.7],
@@ -132,7 +115,7 @@ function getLatLon() {
                 if (response[i].latitude !== null) {
                     let marker = L.marker([response[i].latitude, response[i].longitude], { icon: beerIcon }).addTo(theMap);
                     marker.bindPopup("Brewery: " + response[i].name + "<br>" + "Address: " + response[i].street).openPopup();
-                    beerArray.push(marker)
+                    beerArray.push(marker);
                 }
             }
         });
