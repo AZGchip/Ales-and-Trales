@@ -11,7 +11,10 @@ img {
 }
 
 nav.blue {
-    background-color: rgb(37, 134, 179) !important;
+    background-color: rgb(62, 166, 226) !important;
+    border-bottom: solid;
+    border-width: 0.4rem;
+    border-color: rgb(31, 110, 0);
 }
 
 /* search */
@@ -55,6 +58,10 @@ button {
     z-index: 1;
 }
 
+button:focus, button:hover {
+    background-color:  rgb(218, 174, 30) !important;
+}
+
 .the-button {
     border-top: solid;
     border-right: solid;
@@ -73,13 +80,9 @@ button {
 i.material-icons {
     position: relative;
     top: 0.24rem;
-    right: 0.67rem;
+    right: 0.65rem;
     color: white;
     font-size: 2.25rem;
-}
-
-i:hover {
-    color: black;
 }
 
 /* map */
@@ -100,13 +103,29 @@ main {
 
 /* footer */
 nav.green {
-    background-color: rgb(51, 116, 40) !important;
+    background-color: rgb(31, 110, 0) !important;
     text-align: center;
-    color:   rgb(243, 200, 57);
+    color: rgb(218, 174, 30);
+}
+
+a {
+    color: rgb(218, 174, 30) !important;
 }
 
 .footer-fixed {
 	position: fixed;
 	bottom: 0;
     width: 100%;
+}
+
+/* tooltip */
+.tooltip {
+	display:none;
+	position:absolute;
+	border:1px solid rgb(218, 174, 30);
+	background-color:rgb(218, 174, 30);
+	border-radius:5px;
+	padding:10px;
+	color:white;
+	font-size: 12.5px;
 }

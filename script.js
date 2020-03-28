@@ -126,3 +126,45 @@ function getLatLon() {
     };
 
 }
+
+// Tooltip Search Input
+$(".searchTooltip")
+.hover(function () {
+    // Hover over code: grab and remove title attribute
+    var title = $(this).attr("title");
+    $(this).data("tipText", title).removeAttr("title");
+    // Create <p> element
+    $("<p class='tooltip'></p>").text(title).appendTo("body").fadeIn("slow");
+    }, 
+    function () {
+        // Hover out code: return title attribute and remove <p> element
+        $(this).attr("title", $(this).data("tipText"));
+        $(".tooltip").remove();
+    }
+).mousemove(function (e) {
+    // add postition to <p> element depending on mouse coordinates
+    var mousex = e.pageX + 10; //Get X coordinates
+    var mousey = e.pageY + 10; //Get Y coordinates
+    $(".tooltip").css({ top: mousey, left: mousex })
+});
+
+// Tooltip Spans (creator names)
+$(".spanTooltip")
+.hover(function () {
+    // Hover over code: grab and remove title attribute
+    var title = $(this).attr("title");
+    $(this).data("tipText", title).removeAttr("title");
+    // Create <p> element
+    $("<p class='tooltip'></p>").text(title).appendTo("body").fadeIn("slow");
+    }, 
+    function () {
+        // Hover out code: return title attribute and remove <p> element
+        $(this).attr("title", $(this).data("tipText"));
+        $(".tooltip").remove();
+    }
+).mousemove(function (e) {
+    // add postition to <p> element depending on mouse coordinates
+    var mousex = e.pageX + 10; //Get X coordinates
+    var mousey = e.pageY - 80; //Get Y coordinates
+    $(".tooltip").css({ top: mousey, left: mousex })
+});
