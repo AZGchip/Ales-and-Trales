@@ -22,6 +22,8 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 //Click event on user input box
 $("#user-input").on("click", function (event) {
     event.preventDefault();
+    //Reset placeholder attribute value
+    $(".input").attr("placeholder", "City and State");
     searchbox = $(this).prev().val();
     getLatLon();
     // clearing out input field
@@ -55,6 +57,7 @@ function getLatLon() {
         }
         else {
             // alert("enter valid city")
+            $(".input").attr("placeholder", "Enter Valid City");
         }
         // If beer array is not empty, remove each previous icons
         if (beerArray !== []) {
@@ -126,3 +129,45 @@ function getLatLon() {
     };
 
 }
+
+// Tooltip Search Input
+$(".searchTooltip")
+.hover(function () {
+    // Hover over code: grab and remove title attribute
+    var title = $(this).attr("title");
+    $(this).data("tipText", title).removeAttr("title");
+    // Create <p> element
+    $("<p class='tooltip'></p>").text(title).appendTo("body").fadeIn("slow");
+    }, 
+    function () {
+        // Hover out code: return title attribute and remove <p> element
+        $(this).attr("title", $(this).data("tipText"));
+        $(".tooltip").remove();
+    }
+).mousemove(function (e) {
+    // add postition to <p> element depending on mouse coordinates
+    var mousex = e.pageX + 10; //Get X coordinates
+    var mousey = e.pageY + 10; //Get Y coordinates
+    $(".tooltip").css({ top: mousey, left: mousex })
+});
+
+// Tooltip Spans (creator names)
+$(".spanTooltip")
+.hover(function () {
+    // Hover over code: grab and remove title attribute
+    var title = $(this).attr("title");
+    $(this).data("tipText", title).removeAttr("title");
+    // Create <p> element
+    $("<p class='tooltip'></p>").text(title).appendTo("body").fadeIn("slow");
+    }, 
+    function () {
+        // Hover out code: return title attribute and remove <p> element
+        $(this).attr("title", $(this).data("tipText"));
+        $(".tooltip").remove();
+    }
+).mousemove(function (e) {
+    // add postition to <p> element depending on mouse coordinates
+    var mousex = e.pageX + 10; //Get X coordinates
+    var mousey = e.pageY - 80; //Get Y coordinates
+    $(".tooltip").css({ top: mousey, left: mousex })
+});

@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <!-- fixed header/ needs style changes, currently materialize default -->
+    <!-- fixed header -->
     <div class="navbar-fixed">
         <nav class="blue">
             <div class="nav-wrapper">
@@ -30,9 +30,9 @@
     </div>
 
     <!-- search field, absolutely positioned over map div -->
-    <div class="search-div">
+    <div class="search-div input-field">
         <form class="search-bar">
-            <input class="input" type="text" placeholder="City and State" name="search">
+            <input class="input validate searchTooltip" title="ex. Richmond, Virginia" type="text" placeholder="City and State" name="search">
             <button class="btn-flat the-button" type="submit" id="user-input"><i class="material-icons">explore</i></button>
         </form>
     </div>
@@ -48,8 +48,8 @@
     <div class="footer-fixed">
         <footer class="z-depth-2">
             <nav class="green">
-                <div class="content">
-                    <p>App Created By :  Andrew Zinski, Emilia Josefina Hartline, Daniel Abell, Paul Mikel Houser</p>
+                <div class="content flow-text">
+                    <p class="flow-text">Created by <a class="spanTooltip" title="Andrew Zinski" href="https://github.com/AZGchip" target="blank">Andrew, </a><a class="spanTooltip" title="Emilia Josefina Hartline" href="https://github.com/emijoha" target="blank">Emilia, </a><a class="spanTooltip" title="Daniel Abell" href="https://github.com/dmabell693" target="blank">Daniel, </a>and <a class="spanTooltip" title="Paul Mikel Houser" href="https://github.com/paul-houser3333" target="blank">Mike</a></p>
                 </div>
             </nav>
         </footer>

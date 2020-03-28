@@ -35,6 +35,8 @@ SO that I can conveniently plan an enjoyable outing
 
 ```
 GIVEN a map with a search input
+WHEN I hover over the input field
+THEN a tooltip message appears with example search 
 WHEN I search for a city and state
 THEN I am presented with pins for trails and breweries in that area
 WHEN I click on a trail pin
