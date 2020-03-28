@@ -11,9 +11,9 @@ img {
 }
 
 nav.blue {
-    background-color:rgb(45, 151, 200) !important;
+    background-color:rgb(36, 155, 211) !important;
     border-bottom: solid;
-    border-width: 0.4rem;
+    border-width: 0.3rem;
     border-color: rgb(31, 110, 0);
 }
 
@@ -105,7 +105,7 @@ main {
 nav.green {
     background-color: rgb(31, 110, 0) !important;
     text-align: center;
-    color: rgb(218, 174, 30);
+    color: rgb(226, 186, 53);
 }
 
 a {
