@@ -22,6 +22,8 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 //Click event on user input box
 $("#user-input").on("click", function (event) {
     event.preventDefault();
+    //Reset placeholder attribute value
+    $(".input").attr("placeholder", "City and State");
     searchbox = $(this).prev().val();
     getLatLon();
     // clearing out input field
@@ -55,6 +57,7 @@ function getLatLon() {
         }
         else {
             // alert("enter valid city")
+            $(".input").attr("placeholder", "Enter Valid City");
         }
         // If beer array is not empty, remove each previous icons
         if (beerArray !== []) {
